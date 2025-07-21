@@ -66,7 +66,7 @@ Este projeto é uma API moderna e eficiente para gerenciar usuários, produtos e
    make coverage
    ```
 4. **Acessar a API:**
-   - [http://localhost:8080](http://localhost:8080)
+   - [http://localhost:8080/graphql](http://localhost:8080/graphql)
 
 ---
 
