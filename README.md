@@ -6,7 +6,15 @@ Este projeto é uma API moderna e eficiente para gerenciar usuários, produtos e
 
 ## 🛠️ Decisões Técnicas
 
-### 1. 🏗️ Arquitetura e Organização
+### 1. 🥞 Stack Principal
+- **Go:** `1.23.0`
+- **GraphQL:** `graphql-go`
+- **Banco de Dados:** `GORM` + `SQLite`
+- **Roteador:** `gorilla/mux`
+- **Logging:** `Logrus`
+- **Testes:** `testify`
+
+### 2. 🏗️ Arquitetura e Organização
 - **Domain-Driven Design (DDD):**
   - Entidades, agregados e value objects modelam o domínio de forma explícita.
   - Serviços de domínio encapsulam regras de negócio complexas.
@@ -21,28 +29,15 @@ Este projeto é uma API moderna e eficiente para gerenciar usuários, produtos e
   - `internal/infra/persistence/gorm`: Models e repositórios usando GORM.
   - `internal/infra/api/graphql`: Schema e resolvers GraphQL.
 
-### 2. 💾 Persistência e Banco de Dados
-- **GORM + SQLite:**
-  - GORM facilita o mapeamento objeto-relacional e preload de relacionamentos.
-  - SQLite é usado para simplicidade local, mas a arquitetura permite trocar facilmente por outros bancos.
-- **Relacionamentos explícitos:**
-  - Uso de `Preload` e queries manuais para garantir que os itens e produtos de cada pedido sejam sempre retornados corretamente.
-
 ### 3. 🔗 GraphQL
-- **graphql-go:**
-  - Schema e resolvers definidos explicitamente para garantir flexibilidade e performance.
-  - Resolvers suportam múltiplos tipos de resposta (ex: ListOrderResponse e CreateOrderResponse) para queries e mutations.
 - **Retorno de dados aninhados:**
   - Queries retornam dados completos e aninhados (usuário, itens, produto de cada item, etc).
 
 ### 4. 🧪 Testes (TDD)
-- **Testes unitários com testify:**
-  - Cobrem entidades, agregados e value objects.
-  - Garantem regras de negócio, validações e operações matemáticas.
-- **Cobertura de testes:**
-  - Comando `make coverage` e integração com GitHub Actions.
 - **Desenvolvimento orientado a testes (TDD):**
   - As regras de negócio e entidades foram implementadas sempre acompanhadas de testes automatizados.
+- **Cobertura de testes:**
+  - Comando `make coverage` e integração com GitHub Actions.
 
 ### 5. 🐳 Docker e Deploy
 - **Dockerfile multi-stage:**
